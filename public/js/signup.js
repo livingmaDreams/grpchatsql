@@ -12,7 +12,7 @@ function postSignUp(event){
 
     const obj = {name,mail,phone,password};
 
-    axios.post('http://localhost:3000/signup',obj)
+    axios.post('http://13.55.186.26:3000/signup',obj)
     .then(res => {
         if(res.status == 200)
          {

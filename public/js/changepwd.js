@@ -15,8 +15,8 @@ function changePassword(event){
   }
   else{
      const obj ={pwd,id};
-     axios.post('http://localhost:3000/forgotpassword/resetpassword',obj)
-     .then(res => window.location.href='http://localhost:3000/login')
+     axios.post('http://13.55.186.26:3000/forgotpassword/resetpassword',obj)
+     .then(res => window.location.href='http://13.55.186.26:3000/login')
      .catch(err => console.log(err));
   }
 }

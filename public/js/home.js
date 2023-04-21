@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded',getUsrGroups);
 
 function getUsrGroups(){
   const token = localStorage.getItem('groupChat');
-  axios.get('http://localhost:3000/home/usergrps',{ headers:{"Authorization":token}})
+  axios.get('http://13.55.186.26:3000/home/usergrps',{ headers:{"Authorization":token}})
   .then(res =>{
     const grp = res.data.groups;
     for(let i of grp)
@@ -33,7 +33,7 @@ else{
 const token = localStorage.getItem('groupChat');
 
 try{
-  await axios.post(`http://localhost:3000/home/users`,postObj,{ headers:{"Authorization":token}})
+  await axios.post(`http://13.55.186.26:3000/home/users`,postObj,{ headers:{"Authorization":token}})
   document.getElementById('message').value = '';
   document.getElementById('file').value = '';
 }
@@ -49,7 +49,7 @@ function createGroup(){
    <input type="text" name="name" id="name" placeholder="Name of the Group">
    <div id="users-list"></div>
    <button id="done" name="done">DONE</button>`;
-   axios.get('http://localhost:3000/home/allusers')
+   axios.get('http://13.55.186.26:3000/home/allusers')
    .then(res =>{
     const userList = res.data.users;
     const parDiv = document.getElementById('users-list');
@@ -78,7 +78,7 @@ function createGroup(){
       usr.push(i.name)
     }
     const token = localStorage.getItem('groupChat');
-    axios.post('http://localhost:3000/home/creategroup',{grpName,user:[...usr]},{ headers:{"Authorization":token}})
+    axios.post('http://13.55.186.26:3000/home/creategroup',{grpName,user:[...usr]},{ headers:{"Authorization":token}})
     .then(() => { 
       window.alert(`${grpName} has been created`);
       grpBtnCreation(grpName,'true');
@@ -115,7 +115,7 @@ function getGrpSettings(event){
    <p>Users</p>
    <div id="users-grp-list"></div>
    <button id="done" name="done">DONE</button>`;
-   axios.get(`http://localhost:3000/home/users?grpname=${grpName}`)
+   axios.get(`http://13.55.186.26:3000/home/users?grpname=${grpName}`)
    .then(res =>{
     const userList = res.data.users;
     const admin = res.data.admin;
@@ -173,7 +173,7 @@ function getGrpSettings(event){
     obj.user = usr;
     obj.admin = admn;
     const token = localStorage.getItem('groupChat');
-    axios.post('http://localhost:3000/home/updategroup',obj,{ headers:{"Authorization":token}})
+    axios.post('http://13.55.186.26:3000/home/updategroup',obj,{ headers:{"Authorization":token}})
     .then(() => { 
       window.alert(`${grpName} has been updated`);
     })
@@ -196,7 +196,7 @@ function getGroupChat(event){
     let msgCount= 0;
     
     grp = setInterval(()=>{
-      axios.get(`http://localhost:3000/home/grpmsg?groupname=${grpName}&msgcount=${msgCount}`,{ headers:{"Authorization":token}})
+      axios.get(`http://13.55.186.26:3000/home/grpmsg?groupname=${grpName}&msgcount=${msgCount}`,{ headers:{"Authorization":token}})
       .then(res => {
        const msg = res.data.Msg;
        msgCount = res.data.msgCount;
@@ -226,10 +226,10 @@ document.getElementById('logout').addEventListener('click',logOut);
 
 function logOut(){
   const token = localStorage.getItem('groupChat');
-  axios.get('http://localhost:3000/home/logout',{ headers:{"Authorization":token}})
+  axios.get('http://13.55.186.26:3000/home/logout',{ headers:{"Authorization":token}})
   .then(res => {
     localStorage.setItem('groupChat','');
-    window.location.href='http://localhost:3000/login';
+    window.location.href='http://13.55.186.26:3000/login';
   })
   .catch(err => console.log(err));
 }
