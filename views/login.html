@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Chat</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            background-color: rgb(16, 51, 37);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        header{
+              padding-left: 2vw;
+            padding-top: 2vh;
+            font-size: 4vh;
+            color: white;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 28vw;
+            height: 45vh;
+            padding: 10px;
+            margin: 0;
+            background-color: white;
+            position: relative;
+            left: 38%;
+            border-radius: 2vw;
+        }
+        form input,form button{
+            margin: 2vh;
+            height: 4vh;
+            width: 20vw;
+            font-size: 2.6vh;
+            border-radius: 0.7vh;
+            background-color: white;
+              }
+        form button{
+            width: 15vw;
+            height: 5vh;
+        }
+        form button:hover,#signup:hover{
+            background-color: rgb(2, 74, 50);
+            color: white;
+            border-color: white;
+        }
+        form p{
+            background-color: white;
+            color: rgb(2, 74, 50);
+            font-size: 5vh;
+            margin: 0;
+             
+        }
+        #signup{
+            width: 8vw;
+            height: 5vh; 
+            background-color: white;
+            color: rgb(2, 74, 50);
+            position: absolute;
+            left: 90%;
+            top: 7%;
+            border-radius: 1.8vw;
+            font-size: 3vh;
+            text-align: center;
+            text-decoration: none;
+            padding: 1vh;
+        }
+        #error{
+            color: red;
+            display: block;
+            border: none;
+            padding: 2vh;
+            text-align: center;
+        }
+        #forgotpassword{
+            background-color: white;
+        }
+        #forgotpassword:hover{
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GROUP CHAT</h1>
+    </header>
+    <a href="http://localhost:3000/signup" id="signup">SIGN UP</a>
+   <form id="form-loginPage">
+    <p>LOGIN</p>
+    <input type="text" name="error" id="error">
+    <input type="text" name="mail" id="mail" placeholder="E-Mail">
+    <input type="password" name="password" id="password" placeholder="Password">
+    <button name="submit" id="submit">SUBMIT</button>
+    <a id='forgotpassword' href="/forgotpassword">Forgot Password</a>
+   </form>
+   <script src="/js/login.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

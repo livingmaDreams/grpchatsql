@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            background-color: rgb(16, 51, 37);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        header{
+            padding-left: 2vw;
+            padding-top: 2vh;
+            font-size: 3vh;
+            color: white;
+        }
+        #chat-room{
+            width: 40vw;
+            height: 60vh;
+            background-color: white;
+            margin: auto;
+            border-radius: 2vh;
+            z-index: auto;
+        }
+        #home-input{
+            margin: 2vh;
+            text-align: center;
+            
+        }
+        #message{
+            width: 35vw;
+            background-color: white;
+            height: 4.2vh;
+            font-size: 2.5vh;
+            border-radius: 0.5vw;
+            
+        }
+        #send{
+            width: 5vw;  
+            background-color: white;
+            height: 4vh;
+            font-size: 2.5vh;
+            border-radius: 0.5vw;
+        }
+        #send:hover,#logout:hover{
+            background-color: rgb(2, 74, 50);
+            color: white;
+            border-color: white;
+        }
+        #logout{
+            width: 6vw;
+            height: 5vh; 
+            background-color: white;
+            color: rgb(2, 74, 50);
+            position: absolute;
+            left: 93%;
+            top: 3%;
+            border-radius: 1.8vw;
+            font-size: 2.5vh;
+            text-decoration: none;
+        }
+        #chat-room{
+            padding: 1vh;
+            overflow-y:scroll;
+            position: sticky;
+        }
+        #user-messages-list{
+            margin: 1vh;
+            font-size: 2.4vh;
+            background-color: white;
+        }
+        #user-messages-list span{
+            background-color: white;
+            color: rgb(2, 74, 50);
+        }
+        #group{
+            width: 20vw;
+            height: 50vh;
+            position: absolute;
+            margin: 3vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        #creategroup,#grp-list{
+            font-size: 3vh;
+            border-radius: 1vw;
+            text-decoration: none;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom:3vh;
+            width: 10vw;
+        }
+        #group p{
+            font-size: 3vh;
+            border-radius: 1vw;
+            text-decoration: none;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin:1vh;
+            margin-bottom: 4vh;
+            margin-left: 4vw;
+            text-decoration: underline;
+        }
+        #group-tab,#setting-tab{
+            display: none;
+            position: absolute;
+            width: 50vw;
+            height: 75vh;
+            background-color: white;
+             top: 15%;
+             left: 25%;
+             border-radius: 2vw;
+        }
+         #group-tab > *,#setting-tab > * {
+            background-color: white;
+            color: rgb(2, 74, 50);
+         }
+         #group-tab p{
+            font-size: 3.8vh;
+            text-align: center;  
+        }
+        #setting-tab p{
+            font-size: 3vh;
+            text-align: center;
+            margin-bottom: 1vh;   
+        }
+         #group-tab input,#setting-tab input{
+            width: 35vw;
+            height: 4vh;
+            font-size: 2.5vh;
+            margin: 1vh 8vw;
+            border-radius: 0.5vw;
+            border: 0.1vw solid black;
+         }
+        #done{
+            width: 6vw;
+            height: 5vh; 
+            background-color: rgb(2, 74, 50);
+            color: white;
+            border-radius: 1.8vw;
+            font-size: 2.5vh;
+            position: relative;
+            top: 10%;
+            left: 45%;
+            cursor: pointer;
+            border: none;
+        }
+        #done:hover{
+             background-color: white;
+             color: rgb(2, 74, 50);
+             border: 2px solid  rgb(2, 74, 50);
+        }
+        #users-list{
+            width: 35vw;
+            height: 40vh;
+            border: 0.1vw solid black;
+            margin: 1vh 8vw;
+            border-radius: 0.5vw;
+        }
+        #users-grp-list{
+            width: 35vw;
+            height: 20vh;
+            border: 0.1vw solid black;
+            margin: 1vh 8vw;
+            border-radius: 0.5vw;  
+        }
+        #users-admin-list{
+            width: 35vw;
+            height: 10vh;
+            border: 0.1vw solid black;
+            margin: 1vh 8vw;
+            border-radius: 0.5vw;  
+        }
+        #users-list input,#users-grp-list input,#users-admin-list input{
+           height: 2.5vh;
+           width: 1.5vw;
+           margin: 2.5vh;
+           margin-right: 0;
+        }
+        #users-list label,#users-grp-list label,#users-admin-list label{
+            background-color: white;
+            color: rgb(2, 74, 50);
+            font-size: 2.5vh;
+            margin: 1vh;
+            margin-left: 0;
+        }
+        #grp-active{
+            font-size: 3vh;
+            border-radius: 1vw;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin:1vh;
+            width: 10vw;
+            color: rgb(2, 74, 50);
+            background-color: white;
+        }
+        #settings{
+            color: white;
+            width: 2vw;
+            color: rgb(2, 74, 50);
+            border: none;
+            cursor: pointer;
+            font-size: 3vh;
+            position: relative;
+            right:-59%;
+            top:-10%;
+            margin-top: -2vh;
+
+        }
+        #file{
+            position: absolute;
+            top: 80%;
+            left: 71%;
+            width: 7vw;  
+            background-color: white;
+            height: 4vh;
+            font-size: 2.5vh;
+            border-radius: 0.5vw;
+        }
+        #user-messages-list span img{
+            width: 5vw;
+            height: 10vh;
+        }
+        #user-messages-list span a{
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome</h1>
+    </header>
+    <button id="logout">Logout</button>
+    <div id="group">
+        <button id="creategroup">Create Group</button>
+        <p>Groups</p>
+    </div>
+    <div id="chat-room">   
+    </div>
+    <form id="home-input">
+    <input type="text" name="message" id="message" placeholder="message">
+    <input type="file" name="file" id="file">
+    <button id="send" name="send">SEND</button>
+    </form>
+     <div id="group-tab"></div>
+     <div id="setting-tab"></div>
+    <script src="/js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>
